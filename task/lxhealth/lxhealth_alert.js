@@ -109,7 +109,7 @@ const $hammer = (() => {
     const waitSecond = randomNumber(0, 30);
     setTimeout(() => {
         try {
-            $hammer.alert("乐心健康", "", "点击启动", "lswearable://");
+            $hammer.alert("乐心健康", "", "点击启动", { 'open-url': 'https://bing.com', 'media-url': 'https://github.githubassets.com/images/modules/open_graph/github-mark.png' });
         } catch (error) {
             $hammer.log("lxhealth.alert.js - error:");
             $hammer.log(error);
