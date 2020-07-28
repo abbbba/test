@@ -8,7 +8,7 @@
     {
       "id": "10086",
       "name": "中国移动",
-      "keys": ["jsmcc.ck", "signbody_jsmcc"],
+      "keys": ["jsmcc.ck","signurl_jsmcc","signheader_jsmcc","signbody_jsmcc"],
       "author": "@chavyleung",
       "repo": "https://github.com/chavyleung/scripts/tree/master/gdoil",
       "icons": ["https://raw.githubusercontent.com/Orz-3/mini/master/10086.png", "https://raw.githubusercontent.com/Orz-3/task/master/10086.png"]
