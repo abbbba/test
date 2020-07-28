@@ -8,7 +8,7 @@
     {
       "id": "10086",
       "name": "中国移动",
-      "keys": ["cookieName", "jsmcc.ck"],
+      "keys": ["cookieName", "signbodyKey"],
       "author": "@chavyleung",
       "repo": "https://github.com/chavyleung/scripts/tree/master/gdoil",
       "icons": ["https://raw.githubusercontent.com/Orz-3/mini/master/gdoil.png", "https://raw.githubusercontent.com/Orz-3/task/master/gdoil.png"]
