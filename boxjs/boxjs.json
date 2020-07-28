@@ -7,9 +7,17 @@
   "apps": [
     {
       "id": "10086",
-      "name": "中国移动",
+      "name": "中国移动签到",
       "keys": ["jsmcc.ck","signurl_jsmcc","signheader_jsmcc","signbody_jsmcc"],
-      "author": "@chavyleung",
+      "author": "@abbbba",
+      "repo": "https://github.com/chavyleung/scripts/tree/master/gdoil",
+      "icons": ["https://raw.githubusercontent.com/Orz-3/mini/master/10086.png", "https://raw.githubusercontent.com/Orz-3/task/master/10086.png"]
+    },
+    {
+      "id": "10086",
+      "name": "中国移动信息查询",
+      "keys": ["jsmcc.ck","signurl_jsmccinfo","signheader_jsmccinfo","signbody_jsmccinfo"],
+      "author": "@abbbba",
       "repo": "https://github.com/chavyleung/scripts/tree/master/gdoil",
       "icons": ["https://raw.githubusercontent.com/Orz-3/mini/master/10086.png", "https://raw.githubusercontent.com/Orz-3/task/master/10086.png"]
     }
