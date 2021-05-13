@@ -109,7 +109,7 @@ const $hammer = (() => {
     const waitSecond = randomNumber(0, 30);
     setTimeout(() => {
         try {
-            $hammer.alert("v2ex", "", "点击启动", { 'open-url': 'v2ex://', 'media-url': 'https://raw.githubusercontent.com/abbbba/test/ad/images/v2ex.png' });
+            $hammer.alert("v2ex", "", "点击启动", { 'open-url': 'v2er://', 'media-url': 'https://raw.githubusercontent.com/abbbba/test/ad/images/v2ex.png' });
         } catch (error) {
             $hammer.log("lxhealth.alert.js - error:");
             $hammer.log(error);
