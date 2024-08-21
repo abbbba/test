@@ -23,7 +23,6 @@
     }
   ]
 },
-
 {
   "id": "ChinaTelecomOperators.SMSForward.sub",
   "name": "SMSForward 的应用订阅",
