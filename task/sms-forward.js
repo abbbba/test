@@ -227,11 +227,12 @@ let result
     $.done(result)
   })
 
-async function notify(title, subtitle, body, { copy, KEY_PUSHDEER, KEY_BARK }) {
+async function notify(title, subtitle, body, { copy, KEY_PUSHDEER, KEY_BARK, KEY_TELEGRAM }) {
   const pushdeer = $.getdata(KEY_PUSHDEER)
   const bark = $.getdata(KEY_BARK)
+  const telegram = $.getdata(KEY_TELEGRAM)
 
-  if (pushdeer || bark) {
+  if (pushdeer || bark || telegram) {
     if (pushdeer) {
       try {
         const url = pushdeer.replace('[推送全文]', encodeURIComponent(`${title}\n${subtitle}\n${body}`))
@@ -255,6 +256,29 @@ async function notify(title, subtitle, body, { copy, KEY_PUSHDEER, KEY_BARK }) {
         $.msg('短信转发', `❌ PushDeer 请求`, `${$.lodash_get(e, 'message') || $.lodash_get(e, 'error') || e}`, {})
       }
     }
+    if (telegram) {
+        try {
+          const url = pushdeer.replace('[推送全文]', encodeURIComponent(`${title}\n${subtitle}\n${body}`))
+          $.log(`开始 Telegram 请求: ${url}`)
+          const res = await $.http.get({ url })
+          // console.log(res)
+          const status = $.lodash_get(res, 'status')
+          $.log('↓ res status')
+          $.log(status)
+          let resBody = String($.lodash_get(res, 'body') || $.lodash_get(res, 'rawBody'))
+          try {
+            resBody = JSON.parse(resBody)
+          } catch (e) {}
+          $.log('↓ res body')
+          console.log($.toStr(resBody))
+          if (!['0', '200'].includes(String($.lodash_get(resBody, 'code'))) && !$.lodash_get(resBody, 'isSuccess')) {
+            throw new Error($.lodash_get(resBody, 'errorMessage') || $.lodash_get(resBody, 'message') || $.lodash_get(resBody, 'msg') || '未知错误')
+          }
+        } catch (e) {
+          console.log(e)
+          $.msg('短信转发', `❌ Telegram 请求`, `${$.lodash_get(e, 'message') || $.lodash_get(e, 'error') || e}`, {})
+        }
+      }
     if (bark) {
       try {
         const url = bark
