@@ -1,7 +1,7 @@
 {
   "id": "ChinaTelecomOperators.SMSForward.sub",
-  "name": "SMSForward 的应用订阅",
-  "author": "ChinaTelecomOperators",
+  "name": "abbbba的常用应用订阅",
+  "author": "abbbba",
   "icon": "https://raw.githubusercontent.com/ChinaTelecomOperators/SMSForward/main/asset/1.png",
   "repo": "https://github.com/ChinaTelecomOperators/SMSForward",
   "apps": [
@@ -147,6 +147,13 @@
           "val": "",
           "type": "textarea",
           "desc": "[推送全文] 会被自动替换. 形如 https://api2.pushdeer.com/message/push?pushkey=XXXXXXXXXXX&text=[推送全文]"
+        },
+        {
+          "id": "@ChinaTelecomOperators.sms_forward.telegram",
+          "name": "转发到 Telegram 等",
+          "val": "",
+          "type": "textarea",
+          "desc": "[推送全文] 会被自动替换. 形如 https://api.telegram.org/botXXXXXXXXXX/sendmessage?text=[推送全文]&chat_id=XXXXXXXXX"
         },
         {
           "id": "@ChinaTelecomOperators.sms_forward.keys",
