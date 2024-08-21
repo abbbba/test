@@ -1,26 +1,10 @@
 {
-  "id": "chavy.app.sub",
-  "name": "abbbba 签到应用订阅",
-  "author": "@chavyleung",
-  "icon": "https://avatars3.githubusercontent.com/u/29748519?s=460&u=392a19e85465abbcb1791c9b8b32184a16e6795e&v=4",
-  "repo": "https://github.com/chavyleung/scripts",
+  "id": "ChinaTelecomOperators.SMSForward.sub",
+  "name": "SMSForward 的应用订阅",
+  "author": "ChinaTelecomOperators",
+  "icon": "https://raw.githubusercontent.com/ChinaTelecomOperators/SMSForward/main/asset/1.png",
+  "repo": "https://github.com/ChinaTelecomOperators/SMSForward",
   "apps": [
-    {
-      "id": "10086",
-      "name": "中国移动签到",
-      "keys": ["jsmcc.ck","signurl_jsmcc","signheader_jsmcc","signbody_jsmcc"],
-      "author": "@abbbba",
-      "repo": "https://github.com/chavyleung/scripts/tree/master/gdoil",
-      "icons": ["https://raw.githubusercontent.com/Orz-3/mini/master/10086.png", "https://raw.githubusercontent.com/Orz-3/task/master/10086.png"]
-    },
-    {
-      "id": "10085",
-      "name": "中国移动信息查询",
-      "keys": ["jsmcc.ck","signurl_jsmccinfo","signheader_jsmccinfo","signbody_jsmccinfo"],
-      "author": "@abbbba",
-      "repo": "https://github.com/chavyleung/scripts/tree/master/gdoil",
-      "icons": ["https://raw.githubusercontent.com/Orz-3/mini/master/10086.png", "https://raw.githubusercontent.com/Orz-3/task/master/10086.png"]
-    },
     {
       "id": "ChinaTelecomOperators.sms_forward",
       "name": "短信转发",
@@ -292,4 +276,4 @@
       ]
     }
   ]
-  }
+}
