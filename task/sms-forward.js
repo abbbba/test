@@ -84,6 +84,7 @@ let result
     const KEY_BODY = `@ChinaTelecomOperators.${key}.body`
     const KEY_BARK = `@ChinaTelecomOperators.${key}.bark`
     const KEY_PUSHDEER = `@ChinaTelecomOperators.${key}.pushdeer`
+    const KEY_TELEGRAM = `@ChinaTelecomOperators.${key}.telegram`
 
     const senderAllow = $.getdata(KEY_SENDER_ALLOW) || ''
     const senderAllowRegExp = new RegExp(senderAllow)
@@ -184,7 +185,7 @@ let result
     console.log(`👉🏻 [${index}][${key}] 副标题 ${subtitle}`)
     console.log(`👉🏻 [${index}][${key}] 正文 ${body}`)
 
-    await notify(title, subtitle, body, { copy, KEY_PUSHDEER, KEY_BARK })
+    await notify(title, subtitle, body, { copy, KEY_PUSHDEER, KEY_BARK, KEY_TELEGRAM })
     $.log(`👉🏻 [${index}][${key}] 配置结束`)
   }
   for (const [index, key] of keys.entries()) {
