@@ -259,7 +259,7 @@ async function notify(title, subtitle, body, { copy, KEY_PUSHDEER, KEY_BARK, KEY
     }
     if (telegram) {
         try {
-          const url = pushdeer.replace('[推送全文]', encodeURIComponent(`${title}\n${subtitle}\n${body}`))
+          const url = telegram.replace('[推送全文]', encodeURIComponent(`${title}\n${subtitle}\n${body}`))
           $.log(`开始 Telegram 请求: ${url}`)
           const res = await $.http.get({ url })
           // console.log(res)
