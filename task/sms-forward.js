@@ -273,7 +273,7 @@ async function notify(title, subtitle, body, { copy, KEY_PUSHDEER, KEY_BARK, KEY
           $.log('↓ res body')
           console.log($.toStr(resBody))
           //if (!['0', '200'].includes(String($.lodash_get(resBody, 'code'))) && !$.lodash_get(resBody, 'isSuccess')) {
-            if (!$.lodash_get(resBody, 'ok')) {
+            if (!$.lodash_get(resBody, 'ok')) && !$.lodash_get(resBody, 'isSuccess')) {
             throw new Error($.lodash_get(resBody, 'errorMessage') || $.lodash_get(resBody, 'message') || $.lodash_get(resBody, 'msg') || '未知错误')
           }
         } catch (e) {
