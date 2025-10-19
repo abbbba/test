@@ -85,6 +85,7 @@ let result
     const KEY_BARK = `@ChinaTelecomOperators.${key}.bark`
     const KEY_PUSHDEER = `@ChinaTelecomOperators.${key}.pushdeer`
     const KEY_TELEGRAM = `@ChinaTelecomOperators.${key}.telegram`
+    const KEY_PUSHOVER = `@ChinaTelecomOperators.${key}.pushover`
 
     const senderAllow = $.getdata(KEY_SENDER_ALLOW) || ''
     const senderAllowRegExp = new RegExp(senderAllow)
@@ -185,7 +186,7 @@ let result
     console.log(`👉🏻 [${index}][${key}] 副标题 ${subtitle}`)
     console.log(`👉🏻 [${index}][${key}] 正文 ${body}`)
 
-    await notify(title, subtitle, body, { copy, KEY_PUSHDEER, KEY_BARK, KEY_TELEGRAM })
+    await notify(title, subtitle, body, { copy, KEY_PUSHDEER, KEY_BARK, KEY_TELEGRAM, KEY_PUSHOVER })
     $.log(`👉🏻 [${index}][${key}] 配置结束`)
   }
   for (const [index, key] of keys.entries()) {
@@ -228,10 +229,11 @@ let result
     $.done(result)
   })
 
-async function notify(title, subtitle, body, { copy, KEY_PUSHDEER, KEY_BARK, KEY_TELEGRAM }) {
+async function notify(title, subtitle, body, { copy, KEY_PUSHDEER, KEY_BARK, KEY_TELEGRAM, KEY_PUSHOVER }) {
   const pushdeer = $.getdata(KEY_PUSHDEER)
   const bark = $.getdata(KEY_BARK)
   const telegram = $.getdata(KEY_TELEGRAM)
+  const pushover = $.getdata(KEY_PUSHOVER)
 
   if (pushdeer || bark || telegram) {
     if (pushdeer) {
@@ -281,6 +283,44 @@ async function notify(title, subtitle, body, { copy, KEY_PUSHDEER, KEY_BARK, KEY
           $.msg('短信转发', `❌ Telegram 请求`, `${$.lodash_get(e, 'message') || $.lodash_get(e, 'error') || e}`, {})
         }
       }
+    if (pushover) {
+  try {
+    // 格式: token@user
+    const [token, user] = pushover.split('@')
+    if (!token || !user) throw new Error('Pushover 格式错误，应为 token@user')
+
+    const url = 'https://api.pushover.net/1/messages.json'
+    const payload = {
+      token,
+      user,
+      title,
+      message: `${subtitle}\n${body}`,
+    }
+
+    $.log(`开始 Pushover 请求: ${url}`)
+    const res = await $.http.post({
+      url,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+
+    const status = $.lodash_get(res, 'status')
+    $.log('↓ res status')
+    $.log(status)
+    let resBody = String($.lodash_get(res, 'body') || $.lodash_get(res, 'rawBody'))
+    try {
+      resBody = JSON.parse(resBody)
+    } catch (e) {}
+    $.log('↓ res body')
+    console.log($.toStr(resBody))
+    if (String($.lodash_get(resBody, 'status')) !== '1') {
+      throw new Error($.lodash_get(resBody, 'errors') || '未知错误')
+    }
+  } catch (e) {
+    console.log(e)
+    $.msg('短信转发', `❌ Pushover 请求`, `${$.lodash_get(e, 'message') || $.lodash_get(e, 'error') || e}`, {})
+  }
+}
     if (bark) {
       try {
         const url = bark
