@@ -294,9 +294,9 @@ async function notify(title, subtitle, body, { copy, KEY_PUSHDEER, KEY_BARK, KEY
       token,
       user,
       title,
-      message: `${subtitle}\n${body}`,
+      message: `\n${body}`,
     }
-
+    // message: `${subtitle}\n${body}`,
     $.log(`开始 Pushover 请求: ${url}`)
     const res = await $.http.post({
       url,
