@@ -235,7 +235,7 @@ async function notify(title, subtitle, body, { copy, KEY_PUSHDEER, KEY_BARK, KEY
   const telegram = $.getdata(KEY_TELEGRAM)
   const pushover = $.getdata(KEY_PUSHOVER)
 
-  if (pushdeer || bark || telegram) {
+  if (pushdeer || bark || telegram || pushover) {
     if (pushdeer) {
       try {
         const url = pushdeer.replace('[推送全文]', encodeURIComponent(`${title}\n${subtitle}\n${body}`))
@@ -294,7 +294,7 @@ async function notify(title, subtitle, body, { copy, KEY_PUSHDEER, KEY_BARK, KEY
       token,
       user,
       title,
-      message: `\n${body}`,
+      message: `${body}`,
     }
     // message: `${subtitle}\n${body}`,
     $.log(`开始 Pushover 请求: ${url}`)
