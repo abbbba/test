@@ -294,7 +294,7 @@ async function notify(title, subtitle, body, { copy, KEY_PUSHDEER, KEY_BARK, KEY
       token,
       user,
       title,
-      message: `${body}`,
+      message: `From iPhone XR\n${body}`,
     }
     // message: `${subtitle}\n${body}`,
     $.log(`开始 Pushover 请求: ${url}`)
